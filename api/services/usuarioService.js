@@ -37,7 +37,13 @@ class UsuarioService {
 
     try {
       if (id) {
-        // codigo para buscar por id
+        usuarios = await database.usuarios.findOne({
+          where: {
+            id
+          }
+        })
+
+        return usuarios
       }
 
       usuarios = await database.usuarios.findAll()

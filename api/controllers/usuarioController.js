@@ -15,10 +15,21 @@ class usuarioController {
 
   }
 
-  static async buscarTodosUsuarios(req, res) {
+  static async buscarTodos(req, res) {
     try {
       const usuarios = await usuarioService.buscar()
-      res.status(201).send(usuarios)
+      res.status(200).send(usuarios)
+    } catch (erro) {
+      res.status(400).send({ message: erro })
+    }
+  }
+
+  static async buscarPorId(req, res) {
+    const { id } = req.params
+
+    try {
+      const usuario = await usuarioService.buscar(id)
+      res.status(200).send(usuario)
     } catch (erro) {
       res.status(400).send({ message: erro })
     }
