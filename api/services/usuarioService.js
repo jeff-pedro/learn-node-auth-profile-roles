@@ -58,14 +58,27 @@ class UsuarioService {
 
   async atualizar(id, dto) {
     try {
-      const usuarioAtualizado = await database.usuarios.update(dto, {
+      await database.usuarios.update(dto, {
         where: { id }
       })
 
-      return usuarioAtualizado
+      return true
     } catch (erro) {
       console.log(erro);
       throw new Error('Erro ao atualizar usuário.')
+    }
+  }
+
+  async deletar(id) {
+    try {
+      await database.usuarios.destroy({
+        where: { id }
+      })
+
+      return true
+    } catch (erro) {
+      console.log(erro);
+      throw new Error('Erro ao deletar usuário.')
     }
   }
 }

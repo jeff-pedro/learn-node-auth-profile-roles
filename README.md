@@ -78,16 +78,16 @@ npx sequelize db:migrate
   - \*fará a ponte entre o banco de dados e o controlador
 
 - Implementar função para buscar todos os usuários
-  [ ] controller, service e rota
+  [ x ] controller, service e rota
   I
 - Implementar função para buscar por id
-  [ ] controller, service e rota
+  [ x ] controller, service e rota
 
 - Implementar função para editar
-  [ ] controller, service e rota
+  [ x ] controller, service e rota
 
 - Implementar função para deletar
-  [ ] controller, service e rota
+  [ x ] controller, service e rota
 
 - Criptografar senhas para aumentar a segurança dos dados do usuário no banco de dados
 
@@ -105,6 +105,9 @@ npx sequelize db:migrate
 
 - fazer login de usuários
 - rotas com token de acesso
+
+
+
 
 > [!NOTE]
 > Useful information that users should know, even when skimming content.

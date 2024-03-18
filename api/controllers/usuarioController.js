@@ -43,7 +43,19 @@ class usuarioController {
     try {
       await usuarioService.atualizar(id, dados)
 
-      res.status(200).send({ message: "Usuário foi atualizado com sucesso."})
+      res.status(200).send({ message: "Usuário foi atualizado com sucesso." })
+    } catch (erro) {
+      res.status(400).send({ message: erro })
+    }
+  }
+
+  static async deletar(req, res) {
+    const { id } = req.params
+
+    try {
+      await usuarioService.deletar(id)
+
+      res.status(200).send({ message: "Usuário foi deletado com sucesso." })
     } catch (erro) {
       res.status(400).send({ message: erro })
     }
