@@ -55,6 +55,19 @@ class UsuarioService {
     }
 
   }
+
+  async atualizar(id, dto) {
+    try {
+      const usuarioAtualizado = await database.usuarios.update(dto, {
+        where: { id }
+      })
+
+      return usuarioAtualizado
+    } catch (erro) {
+      console.log(erro);
+      throw new Error('Erro ao atualizar usuário.')
+    }
+  }
 }
 
 module.exports = UsuarioService

@@ -29,7 +29,21 @@ class usuarioController {
 
     try {
       const usuario = await usuarioService.buscar(id)
+
       res.status(200).send(usuario)
+    } catch (erro) {
+      res.status(400).send({ message: erro })
+    }
+  }
+
+  static async atualizar(req, res) {
+    const { id } = req.params
+    const dados = req.body
+
+    try {
+      await usuarioService.atualizar(id, dados)
+
+      res.status(200).send({ message: "Usuário foi atualizado com sucesso."})
     } catch (erro) {
       res.status(400).send({ message: erro })
     }
