@@ -1,14 +1,14 @@
 {
-  "name": "seguranca-nodejs",
-  "version": "1.0.0",
-  "description": "Criar uma api node com autenticação jwt e validações ACL",
+  "name": "autenticacao-perfil-roles",
+  "version": "1.1.0",
+  "description": "API com autenticação JWT e validações ACL",
   "main": "index.js",
   "nodeVersion": "18.15.0",
   "scripts": {
     "start": "nodemon ./api/index.js"
   },
   "keywords": [],
-  "author": "Raphael Lucas Girao de Lima",
+  "author": "Jefferson Pedros dos Santos",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
