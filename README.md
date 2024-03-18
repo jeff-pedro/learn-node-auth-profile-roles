@@ -104,7 +104,7 @@ ID é a escolha quando existir limitação no uso de memória e necessidade de p
 - [Qual UUID usar?](https://stackoverflow.com/questions/20342058/which-uuid-version-to-use)
 - [Diferenças entre UUID e ID sequêncial](https://www.baeldung.com/uuid-vs-sequential-id-as-primary-key)
 
-[ ] no modelo de usuário excluir das consultas ao banco de dados o retorno da campo/atributo senha
+[ x ] no modelo de usuário excluir das consultas ao banco de dados o retorno da campo/atributo senha
 
 ```javascript
 defaultScope: {
@@ -118,9 +118,9 @@ defaultScope: {
 
 [Scopes](https://sequelize.org/docs/v6/other-topics/scopes/)
 
-[ ] criar arquivo rotas para Usuarios
+[ x ] criar arquivo rotas para Usuarios
 
-[ ] adicionar rotas ao index de rotas
+[ x ] adicionar rota do usuário ao index de rotas
 
 ---
 
