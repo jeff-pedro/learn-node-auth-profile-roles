@@ -30,6 +30,25 @@ class UsuarioService {
     }
 
   }
+
+  async buscar(id) {
+
+    let usuarios
+
+    try {
+      if (id) {
+        // codigo para buscar por id
+      }
+
+      usuarios = await database.usuarios.findAll()
+
+      return usuarios
+    } catch (erro) {
+      console.log(erro);
+      throw new Error('Usuário não encontrado.')
+    }
+
+  }
 }
 
 module.exports = UsuarioService

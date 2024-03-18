@@ -77,7 +77,7 @@ npx sequelize db:migrate
   - \*devará conter método para **cadastrar** usuário
   - \*fará a ponte entre o banco de dados e o controlador
 
-- Implementar função para buscar
+- Implementar função para buscar todos os usuários
   [ ] controller, service e rota
   I
 - Implementar função para buscar por id

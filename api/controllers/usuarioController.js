@@ -14,6 +14,15 @@ class usuarioController {
     }
 
   }
+
+  static async buscarTodosUsuarios(req, res) {
+    try {
+      const usuarios = await usuarioService.buscar()
+      res.status(201).send(usuarios)
+    } catch (erro) {
+      res.status(400).send({ message: erro })
+    }
+  }
 }
 
 module.exports = usuarioController
