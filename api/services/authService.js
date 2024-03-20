@@ -22,8 +22,6 @@ class AuthService {
 
             const senhasIguais = await compare(dto.senha, usuario.senha)
 
-            console.log(senhasIguais)
-
             if (!senhasIguais) {
                 throw new Error('Usuário ou senha inválido.')
             }
