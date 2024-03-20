@@ -101,10 +101,13 @@ npx sequelize db:migrate
 
 > Login de usuários com rotas privadas usando token de acesso
 
-[ ] criar modulo de autenticação para
+- Cria módulo de autenticação para a rota de Login
 
-- fazer login de usuários
-- rotas com token de acesso
+- Quando autenticado retorna token JWT
+
+- 
+
+
 
 
 
