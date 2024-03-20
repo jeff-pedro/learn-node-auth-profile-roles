@@ -1,10 +1,10 @@
 const { Router } = require('express')
 const UsuarioController = require('../controllers/usuarioController')
-const autenticacao = require('../middlewares/autenticado') 
+const autenticado = require('../middlewares/autenticado') 
 
 const router = Router()
 
-router.use(autenticacao)
+router.use(autenticado)
 
 router
     .post('/usuarios', UsuarioController.cadastrar)

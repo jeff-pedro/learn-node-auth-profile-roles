@@ -97,19 +97,26 @@ npx sequelize db:migrate
 
   [ x ] no `usuarioService` verificar se o usuário a ser criado já existe
 
+
 ### Autenticação
 
 > Login de usuários com rotas privadas usando token de acesso
 
-- Cria módulo de autenticação para a rota de Login retornando um token
-  
-  - autentica usuário comparando a senha armazenada com a senha passado na requisição
-  - quando autenticado cria e retorna token JWT
+- Cria um sistema de login utilizando token JWT para adicionar segurança as rotas da API
+  - autenticando usuários ao comparar a senha armazenada com a senha passada na requisição
+  - criando e retornando um token JWT que armazena os dados do usuário
 
-Criar Middleware responsável pela autenticaçao
-  - recebe o token um token vindo de um determinado endpoint
-  - valida o token
-  - retorna o payload do token
+- Cria um middleware para verificar se usuários estão autenticados na API
+  - validando se um token está sendo recebido via requisição através do `req.headers.authorization`
+  - varificando se o token é valido
+  - retornando o payload do token na resposta
+
+- Armazena informações do usuário nos dados da requisição para utilizar dentro das controllers e services
+  - usando o "payload" do token para enviar dados via requisição
+  - usando os métodos do [jsonwebtoken](): `sign` para criar e `decode` para extrair o "payload"
+
+- Adiciona o middleware de autorizaçao via token às rotas da aplicação
+  - adicionando o middleware ao `Router.use()`
 
 
 
