@@ -51,13 +51,21 @@ class RoleService {
             await database.roles.update(dto, {
                 where: { id }
             })
-        
+
             return
         } catch (error) {
             throw new Error('Não foi possível atualizar a role.')
         }
     }
-    async deletar(id) { }
+    async deletar(id) {
+        try {
+            await database.roles.destroy({ where: { id } })
+
+            return
+        } catch (error) {
+            throw new Error('Não foi excluír a role.')
+        }
+    }
 
 }
 

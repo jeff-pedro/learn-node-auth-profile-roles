@@ -52,7 +52,18 @@ class RoleController {
         }
     }
     
-    static async deletar(req, res) { }
+    static async deletar(req, res) {
+        const { id } = req.params
+        
+        try {
+            await roleService.deletar(id)
+
+            res.status(200).send({ message: 'Role excluída com sucesso.'})
+        } catch (error) {
+            res.status(400).send({ message: error.message })
+
+        }
+    }
 }
 
 module.exports = RoleController
