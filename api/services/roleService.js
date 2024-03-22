@@ -43,9 +43,13 @@ class RoleService {
     }
     async atualizar(id, dto) {
         try {
-            await database.roles.update(dto, {
+            const role = await database.roles.update(dto, {
                 where: { id }
             })
+
+            if (!role[0]) {
+                throw new Error('Role informada não cadastrada!')
+            }
 
             return
         } catch (error) {
@@ -54,7 +58,11 @@ class RoleService {
     }
     async deletar(id) {
         try {
-            await database.roles.destroy({ where: { id } })
+            const role = await database.roles.destroy({ where: { id } })
+
+            if (!role) {
+                throw new Error('Role informada não cadastrada!')
+            }
 
             return
         } catch (error) {
