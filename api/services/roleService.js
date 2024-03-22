@@ -30,7 +30,7 @@ class RoleService {
             throw new Error('Erro ao cadastrar role.')
         }
     }
-    
+
     async buscar(id) {
         let resultado
 
@@ -46,7 +46,17 @@ class RoleService {
             throw new Error('Nenhuma role encontrada.')
         }
     }
-    async atualizar(id) { }
+    async atualizar(id, dto) {
+        try {
+            await database.roles.update(dto, {
+                where: { id }
+            })
+        
+            return
+        } catch (error) {
+            throw new Error('Não foi possível atualizar a role.')
+        }
+    }
     async deletar(id) { }
 
 }

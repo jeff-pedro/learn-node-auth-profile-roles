@@ -37,7 +37,21 @@ class RoleController {
 
         }
     }
-    static async atualizar(req, res) { }
+
+    static async atualizar(req, res) {
+        const { id } = req.params
+        const data = req.body
+        
+        try {
+            await roleService.atualizar(id, data)
+
+            res.status(200).send({ message: 'Role atualizada com sucesso.'})
+        } catch (error) {
+            res.status(400).send({ message: error.message })
+
+        }
+    }
+    
     static async deletar(req, res) { }
 }
 
