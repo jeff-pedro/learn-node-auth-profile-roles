@@ -10,7 +10,7 @@ class PermissaoService {
         })
 
         if (permissao) {
-            throw new Error('Permissao já existe.')
+            throw new Error('Permissão já existe.')
         }
 
         try {
@@ -23,7 +23,7 @@ class PermissaoService {
             return newPermissao
         } catch (error) {
             console.log(error)
-            throw new Error('Erro ao cadastrar permissao.')
+            throw new Error('Erro ao cadastrar permissão.')
         }
     }
 
@@ -33,35 +33,54 @@ class PermissaoService {
         try {
             if (id) {
                 resultado = await database.permissao.findOne({ id })
+
+                if (!resultado) {
+                    throw new Error('Permissão informada não cadastrada!')
+                }
+
             } else {
                 resultado = await database.permissao.findAll()
             }
 
             return resultado
         } catch (error) {
-            throw new Error('Nenhuma permissao encontrada.')
+            throw new Error(error.message)
         }
     }
-    async atualizar(id, dto) {
+    async atualizar(dto) {
         try {
-            const up = await database.permissao.update(dto, {
-                where: { id }
+
+            let permissao = await database.permissao.findOne({
+                where: {
+                    id: dto.id
+                }
             })
 
-            console.log(up)
+            if (!permissao) {
+                throw new Error('Permissão informada não cadastrada!')
+            }
 
-            return
+            permissao.nome = dto.nome
+            permissao.descricao = dto.descricao
+
+            await permissao.save()
+
+            return await permissao.reload()
         } catch (error) {
-            throw new Error('Não foi possível atualizar a permissao.')
+            throw new Error(error.message)
         }
     }
     async deletar(id) {
         try {
-            await database.permissao.destroy({ where: { id } })
+            const permissao = await database.permissao.destroy({ where: { id } })
+
+            if (!permissao) {
+                throw new Error('Permissão informada não cadastrada!')
+            }
 
             return
         } catch (error) {
-            throw new Error('Não foi excluír a permissao.')
+            throw new Error(error.message)
         }
     }
 

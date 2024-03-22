@@ -27,9 +27,22 @@ class PermissaoController {
 
     static async buscarPorId(req, res) {
         const { id } = req.params
-        
+
         try {
             const permissao = await permissaoService.buscar(id)
+
+            res.status(200).send(permissao)
+        } catch (error) {
+            res.status(400).send({ message: error.message })
+        }
+    }
+
+    static async atualizar(req, res) {
+        const { id } = req.params
+        const data = req.body
+
+        try {
+            const permissao = await permissaoService.atualizar({ id, ...data })
 
             res.status(200).send(permissao)
         } catch (error) {
@@ -38,27 +51,13 @@ class PermissaoController {
         }
     }
 
-    static async atualizar(req, res) {
-        const { id } = req.params
-        const data = req.body
-        
-        try {
-            await permissaoService.atualizar(id, data)
-
-            res.status(200).send({ message: 'Permissao atualizada com sucesso.'})
-        } catch (error) {
-            res.status(400).send({ message: error.message })
-
-        }
-    }
-    
     static async deletar(req, res) {
         const { id } = req.params
-        
+
         try {
             await permissaoService.deletar(id)
 
-            res.status(200).send({ message: 'Permissao excluída com sucesso.'})
+            res.status(200).send({ message: 'Permissão excluída com sucesso.' })
         } catch (error) {
             res.status(400).send({ message: error.message })
 
