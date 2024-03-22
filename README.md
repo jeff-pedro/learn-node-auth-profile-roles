@@ -119,6 +119,12 @@ npx sequelize db:migrate
   - adicionando o middleware ao `Router.use()`
 
 
+## Roles
+> Criacao perfil de usuarios
+
+ - CRUD de Roles
+
+
 
 
 
