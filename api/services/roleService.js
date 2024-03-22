@@ -3,8 +3,6 @@ const database = require('../models')
 
 class RoleService {
     async cadastrar(dto) {
-        console.log(dto)
-
         const role = await database.roles.findOne({
             where: {
                 nome: dto.nome
@@ -22,11 +20,8 @@ class RoleService {
                 descricao: dto.descricao
             })
 
-            console.log(newRole)
-
             return newRole
         } catch (error) {
-            console.log(error)
             throw new Error('Erro ao cadastrar role.')
         }
     }
