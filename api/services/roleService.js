@@ -30,7 +30,22 @@ class RoleService {
             throw new Error('Erro ao cadastrar role.')
         }
     }
-    async buscar(id) { }
+    
+    async buscar(id) {
+        let resultado
+
+        try {
+            if (id) {
+                resultado = await database.roles.findOne({ id })
+            } else {
+                resultado = await database.roles.findAll()
+            }
+
+            return resultado
+        } catch (error) {
+            throw new Error('Nenhuma role encontrada.')
+        }
+    }
     async atualizar(id) { }
     async deletar(id) { }
 

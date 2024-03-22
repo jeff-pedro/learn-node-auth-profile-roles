@@ -14,8 +14,29 @@ class RoleController {
         }
     }
 
-    static async buscarTodos(req, res) { }
-    static async buscarPorId(req, res) { }
+    static async buscarTodos(req, res) {
+        try {
+            const roles = await roleService.buscar()
+
+            res.status(200).send(roles)
+        } catch (error) {
+            res.status(400).send({ message: error.message })
+
+        }
+    }
+
+    static async buscarPorId(req, res) {
+        const { id } = req.params
+        
+        try {
+            const role = await roleService.buscar(id)
+
+            res.status(200).send(role)
+        } catch (error) {
+            res.status(400).send({ message: error.message })
+
+        }
+    }
     static async atualizar(req, res) { }
     static async deletar(req, res) { }
 }
