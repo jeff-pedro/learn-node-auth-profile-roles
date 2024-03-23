@@ -122,7 +122,11 @@ npx sequelize db:migrate
 ## Roles
 > Criacao perfil de usuarios
 
- - CRUD de Roles
+  - CRUD de Roles
+  - Criacao de tabela pivô
+  - Referecias nas tabelas
+  - Relacionamentos entre tabelas
+  
 
 
 
