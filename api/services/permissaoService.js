@@ -3,7 +3,7 @@ const database = require('../models')
 
 class PermissaoService {
     async cadastrar(dto) {
-        const permissao = await database.permissao.findOne({
+        const permissao = await database.permissoes.findOne({
             where: {
                 nome: dto.nome
             }
@@ -14,7 +14,7 @@ class PermissaoService {
         }
 
         try {
-            const newPermissao = await database.permissao.create({
+            const newPermissao = await database.permissoes.create({
                 id: uuidv4(),
                 nome: dto.nome,
                 descricao: dto.descricao
@@ -32,14 +32,14 @@ class PermissaoService {
 
         try {
             if (id) {
-                resultado = await database.permissao.findOne({ id })
+                resultado = await database.permissoes.findOne({ id })
 
                 if (!resultado) {
                     throw new Error('Permissão informada não cadastrada!')
                 }
 
             } else {
-                resultado = await database.permissao.findAll()
+                resultado = await database.permissoes.findAll()
             }
 
             return resultado
@@ -50,7 +50,7 @@ class PermissaoService {
     async atualizar(dto) {
         try {
 
-            let permissao = await database.permissao.findOne({
+            let permissao = await database.permissoes.findOne({
                 where: {
                     id: dto.id
                 }
@@ -72,7 +72,7 @@ class PermissaoService {
     }
     async deletar(id) {
         try {
-            const permissao = await database.permissao.destroy({ where: { id } })
+            const permissao = await database.permissoes.destroy({ where: { id } })
 
             if (!permissao) {
                 throw new Error('Permissão informada não cadastrada!')
