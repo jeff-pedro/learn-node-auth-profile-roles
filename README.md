@@ -119,20 +119,25 @@ npx sequelize db:migrate
   - adicionando o middleware ao `Router.use()`
 
 
-## Roles
-> Criacao perfil de usuarios
+## Roles e Permissões
+> Criação de permissões e perfís de usuários
 
-  - CRUD de Roles
-  - Criacao de tabela pivô
-  - Referecias nas tabelas
-  - Relacionamentos entre tabelas
+  - Implementa CRUD de Roles para definir os tipos de perfis de usuários
   
+  - Implementa CRUD de Permissões que define as permissões as usuários e roles terão
+  
+  - Cria tabelas pivô, por onde os modelos serão relacionados
+  
+  - Cria referência entre tabelas para saber quais serão as chaves primárias e estrangeiras nas tabelas
+    - adiciona ação de remoção e atualização nas tabelas no modo CASCADE
+  
+  - Define relacionamentos entre tabelas
+    - [associassão](https://sequelize.org/docs/v6/core-concepts/assocs/) Many-to-Many entre os models
+  
+  -
 
-
-
-
-
-> [!NOTE]
+  
+<!-- > [!NOTE]
 > Useful information that users should know, even when skimming content.
 
 > [!TIP]
@@ -145,4 +150,4 @@ npx sequelize db:migrate
 > Urgent info that needs immediate user attention to avoid problems.
 
 > [!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
+> Advises about risks or negative outcomes of certain actions. -->
