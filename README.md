@@ -124,7 +124,7 @@ npx sequelize db:migrate
 
   - Implementa CRUD de Roles para definir os tipos de perfis de usuários
   
-  - Implementa CRUD de Permissões que define as permissões as usuários e roles terão
+  - Implementa CRUD de Permissões que define as permissões os usuários e roles terão
   
   - Cria tabelas pivô, por onde os modelos serão relacionados
   
@@ -133,8 +133,18 @@ npx sequelize db:migrate
   
   - Define relacionamentos entre tabelas
     - [associassão](https://sequelize.org/docs/v6/core-concepts/assocs/) Many-to-Many entre os models
-  
-  -
+
+
+## ACL
+  - Cria cadastro ACL que adiciona perfis e permissões em usuários para diferenciar os acessos
+
+  - Cria cadastro de permissões nos perfis, diferenciando as permissões que cada tipo de usuário irá acessar
+
+  - Utilizar funções alias do Sequelize para facilitar as ações entre tabelas relacionadas
+
+
+## Middleware de Permissões
+
 
   
 <!-- > [!NOTE]
