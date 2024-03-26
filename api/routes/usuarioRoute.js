@@ -4,10 +4,11 @@ const autenticado = require('../middlewares/autenticado')
 
 const router = Router()
 
+router.post('/usuarios', UsuarioController.cadastrar)
+
 router.use(autenticado)
 
 router
-    .post('/usuarios', UsuarioController.cadastrar)
     .get('/usuarios', UsuarioController.buscarTodos)
     .get('/usuarios/id/:id', UsuarioController.buscarPorId)
     .put('/usuarios/id/:id', UsuarioController.atualizar)
