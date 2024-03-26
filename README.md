@@ -145,6 +145,8 @@ npx sequelize db:migrate
 
 ## Middleware de Permissões
 
+- Cria middleware para controlar a permissão a determinado endpoint baseado nos perfis (roles)
+- 
 
   
 <!-- > [!NOTE]
