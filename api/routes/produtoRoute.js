@@ -2,15 +2,15 @@ const { Router } = require('express')
 const ProdutoController = require('../controllers/produtoController')
 const roles = require('../middlewares/roles')
 const permissoes = require('../middlewares/permissoes')
-const validaPermissoes = require('../middlewares/validaPermissoes')
+const permissoesRoles = require('../middlewares/permissoesRoles')
 
 const router = Router()
 
 router
-    .post('/produto',roles(['Gerente']), ProdutoController.cadastrarProduto)
-    .get('/produto', permissoes(['editar', 'listar']), ProdutoController.buscarTodosProdutos)
-    .get('/produto/id/:id', validaPermissoes(['listar']), ProdutoController.buscarProdutoPorId)
-    .delete('/produto/id/:id', ProdutoController.deletarProdutoPorId)
-    .put('/produto/id/:id', ProdutoController.editarProduto)
+    .post('/produto', permissoesRoles(['adicionar']), ProdutoController.cadastrarProduto)
+    .get('/produto', permissoes(['listar']), ProdutoController.buscarTodosProdutos)
+    .get('/produto/id/:id', permissoesRoles(['listar']), ProdutoController.buscarProdutoPorId)
+    .delete('/produto/id/:id', roles(['Gerente']), permissoes(['excluir']), ProdutoController.deletarProdutoPorId)
+    .put('/produto/id/:id', permissoesRoles(['editar']), ProdutoController.editarProduto)
 
 module.exports = router
