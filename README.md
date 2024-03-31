@@ -1,40 +1,71 @@
-# Node.js Rest API: authentication, roles and profile
+# Node.js Rest API: autenticação, roles and profile
 
-> Repository used to learn about authentication, profile and roles with Node.js applied to a Rest API.
+> Repositório usado para aprender sobre autenticação, perfil e permissões com  Node.js aplicado a uma API RestFul.
 
-## Using
+## Requisitos
+- Instância do Postgres
+- Docker
+- Node e NPM
+- NVM (opcionalmente)
 
-1. running postgres via docker
+## Usando
 
+### Docker Compose
+
+1. subir o bando de dados e a aplicação via docker compose 
 ```shell
-docker run --name postgres -e POSTGRES_HOST_AUTH_METHOD=trust -p 5432:5432 -d postgres
+docker compose up --build -d
 ```
 
-2. install dependencies
+2. criar o bando de dados
+```shell
+docker exec supply-api npx sequelize db:create
+```
 
+3. migrar as tabelas para o banco de dados
+```shell
+docker exec supply-api npx sequelize db:migrate
+```
+
+### Manualmente
+
+1. executar uma instância do postgres (docker, local ou cloud)
+
+exemplo com docker
+```shell
+docker run --name postgres -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres
+```
+
+2. configurar parâmetros do banco de dados em `./api/config/config.json`
+
+3. instalar as dependências
 ```shell
 npm install
 ```
 
-3. create a database
-
+4. criar o bando de dados
 ```shell
 npx sequelize db:create
 ```
 
-4. migrate tables to the database
-
+5. migrar as tabelas para o banco de dados
 ```shell
 npx sequelize db:migrate
 ```
 
-## Tarefas
+6. executar a aplicação
+```shell
+npm start
+```
+
+
+## Explorado
 
 ### CRUD
 
 - Criar tabelas no banco de dados usando CLI do Sequelize para salvar todos os usuários cadastrados.
 
-  [ x ] criar tabela de _usuarios_ com "nome", "email" e "senha"
+  - criar tabela de _usuarios_ com "nome", "email" e "senha"
 
   ```shell
   npx sequelize model:create --name usuarios --attributes nome:string,email:string,senha:string
@@ -42,11 +73,11 @@ npx sequelize db:migrate
 
 - Usar hash uuid para aumentar a segurança dos registro no banco de dados e impedir que pessoas maliciosas tenham acesso a quantidade de registros do banco de dados.
 
-  [ x ] [alterar no arquivo de migrações o tipo de dado do ID para UUID](docs/sobre_uuid.md)
+  - [alterar no arquivo de migrações o tipo de dado do ID para UUID](docs/id-uuid.md)
 
-  [ x ] [no modelo de usuário excluir das consultas ao banco de dados o retorno da campo/atributo senha](docs/sequelize-scopes.md)
+  - [no modelo de usuário excluir das consultas ao banco de dados o retorno da campo/atributo senha](docs/sequelize-scopes.md)
 
-  [ x ] fazer a migração da tabela de usuários
+  - fazer a migração da tabela de usuários
 
   ```shell
   npx sequelize db:migrate
@@ -54,15 +85,15 @@ npx sequelize db:migrate
 
 - Criar rotas usando express para diferenciar cada serviço do CRUD de usuarios.
 
-  [ x ] criar arquivo rotas para usuários em `api/routes/usuariosRoute.js`
+  - criar arquivo rotas para usuários em `api/routes/usuariosRoute.js`
 
-  [ x ] adicionar rota do usuário ao index de rotas em `api/routes/index.js`
+  - adicionar rota do usuário ao index de rotas em `api/routes/index.js`
 
 - Implementar o CRUD de usuários
 
 - Imprementar função para cadastrar
 
-  [ x ] criar controlator de usuários em `api/controllers/usuarioController.js`
+  - criar controlator de usuários em `api/controllers/usuarioController.js`
 
   **observações:**
 
@@ -70,7 +101,7 @@ npx sequelize db:migrate
   - \*deverá conter um método `static` para **cadastrar** usuário
   - deverá ter apenas código referente a requisição e não regra de negócio e acesso a base de dados
 
-  [ x ] criar serviço para o controlador de usuários em `api/services/usuarioService.js`
+  - criar serviço para o controlador de usuários em `api/services/usuarioService.js`
 
   **observações:**
 
@@ -78,24 +109,24 @@ npx sequelize db:migrate
   - \*fará a ponte entre o banco de dados e o controlador
 
 - Implementar função para buscar todos os usuários
-  [ x ] controller, service e rota
+  - controller, service e rota
   I
 - Implementar função para buscar por id
-  [ x ] controller, service e rota
+  - controller, service e rota
 
 - Implementar função para editar
-  [ x ] controller, service e rota
+  - controller, service e rota
 
 - Implementar função para deletar
-  [ x ] controller, service e rota
+  - controller, service e rota
 
 - Criptografar senhas para aumentar a segurança dos dados do usuário no banco de dados
 
-  [ x ] [criar metodo no service de usuário para cadastrar usuário e salva senha como uma hash via `bcryptjs`](docs/sobre_crypt-bcrypt-bcryptjs.md)
+  - [criar metodo no service de usuário para cadastrar usuário e salva senha como uma hash via `bcryptjs`](docs/crypt-bcrypt-bcryptjs.md)
 
 - Fazer consultas no banco de dados usando ORM Sequelize
 
-  [ x ] no `usuarioService` verificar se o usuário a ser criado já existe
+  - no `usuarioService` verificar se o usuário a ser criado já existe
 
 
 ### Autenticação

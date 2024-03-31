@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    container_name: supply-api
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/api
+    command: npm start
+  
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    volumes:
+      - data:/var/lib/postgres/data
+    environment:
+      - POSTGRES_PASSWORD=123456
+
+volumes:
+  data:
