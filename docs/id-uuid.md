@@ -6,6 +6,8 @@ id: {
       defaultValue: Sequelize.UUID4
     }
 ```
+- em **type** é definido tipo de dado _UUID_ que se espera receber
+- e em **defaultValue** é definido o valor padrão, que será um _UUID na versão 4_
 
 ## Diferenças entre versões do UUID
 
