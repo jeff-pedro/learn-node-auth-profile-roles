@@ -176,9 +176,11 @@ npm start
 
 ## Middleware de Permissões
 
-- Cria middleware para controlar a permissão a determinado endpoint baseado nos perfis (roles)
-- 
+- Cria middleware de perfis de usuário para verificar quais os tipos de usuários podem ter acesso a um determinado endpoint
 
+- Cria middleware de permissões do usuário para verificar quais as permissões podem ter acesso a um determinado endpoint
+
+- Cria middleware de permissões de perfis de usuário, para verificar quais as permissões por perfil de usuário podem ter acesso a um determinado endpoint.
   
 <!-- > [!NOTE]
 > Useful information that users should know, even when skimming content.
